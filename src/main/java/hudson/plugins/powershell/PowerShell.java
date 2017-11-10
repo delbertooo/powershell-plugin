@@ -35,7 +35,7 @@ public class PowerShell extends CommandInterpreter {
     }
 
     protected String getContents() {
-        return command + "\r\nexit $LastExitCode";
+        return "$ErrorActionPreference = \"Stop\"\r\n" + command + "\r\nexit $LastExitCode";
     }
 
     private boolean isRunningOnWindows(FilePath script) {
